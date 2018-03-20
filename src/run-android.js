@@ -144,11 +144,11 @@ function checkApk() {
 	.then( (projectRootPath) => {
         var deferred = Q.defer();
 
-        //console.log("Project Root Path = " + projectRootPath );
+        console.log("Project Root Path = " + projectRootPath );
         var customPluginPath = path.join(projectRootPath, 'plugins');
         var customAppPath = path.join(projectRootPath, 'platforms/android');
         var customApkPath = path.join(projectRootPath, 'platforms/android/build/outputs/apk/debug/android-debug.apk');
-        //console.log("customApkPath Path = " + customApkPath );
+        console.log("customApkPath Path = " + customApkPath );
 
         if ( fs.existsSync(customAppPath) ) {
             if ( !fs.existsSync(customApkPath) ) {
