@@ -33,7 +33,7 @@ function getCustomAppBinaryPath()
 {
 	return project.projectRootPath()
 	.then( (projectRootPath) => {
-		var customAppPath = path.join(projectRootPath, 'platforms/android/build/outputs/apk/android-debug.apk');
+		var customAppPath = path.join(projectRootPath, 'platforms/android/build/outputs/apk/debug/android-debug.apk');
 		return FS.exists(customAppPath)
 		.then( (exists) => {
 			if (!exists) {
