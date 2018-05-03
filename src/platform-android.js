@@ -59,7 +59,7 @@ function install() {
 function installSdk() {
     var deferred = Q.defer();
     var sdkDownloadUrl = null;
-    var sdkInstallPath = path.join(getUserHome(), 'platforms/android/sdk');
+    var sdkInstallPath = path.join(getUserHome(), 'platforms/android/sdk-26-new');
     var tempSdkDownloadFilePath = path.join(os.tmpdir(), 'android_sdk.zip');
     var tempSdkUnzipRoot = path.join(os.tmpdir(), 'platform');
     var tempSdkUnzipPath = null;
@@ -74,8 +74,18 @@ function installSdk() {
         sdkDownloadUrl = 'http://dl.google.com/android/android-sdk_r24.4.1-windows.zip';
         tempSdkUnzipPath = path.join(tempSdkUnzipRoot, 'android-sdk-windows');
     } else if (process.platform == 'darwin') {
-        sdkDownloadUrl = 'http://dl.google.com/android/android-sdk_r24.4.1-macosx.zip';
+        console.log("testing platform install");
+
+        //http://dl.google.com/android/repository/platform-26_r01.zip
+        //http://dl.google.com/android/android-sdk_r24.4.1-macosx.zip
+        sdkDownloadUrl = 'http://dl.google.com/android/repository/platform-26_r01.zip';
         tempSdkUnzipPath = path.join(tempSdkUnzipRoot, 'android-sdk-macosx');
+        console.log("tempSdkUnzipRoot = " + tempSdkUnzipRoot);
+
+        console.log("tempSdkUnzipPath = " + tempSdkUnzipPath);
+        console.log("sdkDownloadUrl = " + sdkDownloadUrl);
+
+
     } else {
         events.emit("log", "Unsupported OS: %s", process.platform);
         return;
