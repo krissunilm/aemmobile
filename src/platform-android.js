@@ -59,7 +59,7 @@ function install() {
 function installSdk() {
     var deferred = Q.defer();
     var sdkDownloadUrl = null;
-    var sdkInstallPath = path.join(getUserHome(), 'platforms/android/sdk-26-new');
+    var sdkInstallPath = path.join(getUserHome(), 'platforms/android/sdk');
     var tempSdkDownloadFilePath = path.join(os.tmpdir(), 'android_sdk.zip');
     var tempSdkUnzipRoot = path.join(os.tmpdir(), 'platform');
     var tempSdkUnzipPath = null;

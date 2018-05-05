@@ -34,8 +34,14 @@ var constants = require('../utils/constants');
 module.exports = run;
 
 function run(opts) {
+
+  console.log("opts.options.device= " + opts.options.device);
+
     var deviceName = opts.options.device ? "device" : "emulator";
 
+deviceName = "device";
+   console.log("deviceName= " + deviceName);
+    //return runOnDevice();
     if (deviceName == "device") {
         return runOnDevice();
     } else {
@@ -71,7 +77,7 @@ function runOnDevice() {
                 launchActivity = "com.adobe.dps.preflight/com.adobe.dps.viewer.collectionview.CollectionActivity";
             }
             var serverIp = ip.address();
-            var launchCmd = path.join(userHome, 'platforms/android/sdk-26-new/platform-tools/adb') + ' -d shell am start -n ' +
+            var launchCmd = path.join(userHome, 'platforms/android/sdk/platform-tools/adb') + ' -d shell am start -n ' +
                 launchActivity + ' -e phonegapServer ' + serverIp + ':3000' + ' -e initialOrientation ' + orientation;
             shell.exec(launchCmd, {
                 silent: false
@@ -122,7 +128,7 @@ function runOnEmulator() {
                 // prebuilt apk has different package name from custom apk
                 launchActivity = "com.adobe.dps.preflight/com.adobe.dps.viewer.collectionview.CollectionActivity";
             }
-            var launchCmd = path.join(userHome, 'platforms/android/sdk-26-new/platform-tools/adb') + ' -s ' + deviceSerialNum +
+            var launchCmd = path.join(userHome, 'platforms/android/sdk/platform-tools/adb') + ' -s ' + deviceSerialNum +
                 ' shell am start -n ' + launchActivity + ' -e phonegapServer 10.0.2.2:3000' + ' -e initialOrientation ' + orientation;
             shell.exec(launchCmd, {
                 silent: false
@@ -185,7 +191,7 @@ function installApkOnDevice()
                 apkType = constants.APK_TYPE_PREBUILT;
             }
 
-            var checkCmd = path.join(getUserHome(), 'platforms/android/sdk-26-new/platform-tools/adb') + ' -d install -r '
+            var checkCmd = path.join(getUserHome(), 'platforms/android/sdk/platform-tools/adb') + ' -d install -r '
                 + '"' + apkPath + '"';
             shell.exec(checkCmd, {
                 silent: false
@@ -212,7 +218,7 @@ function installApkOnEmulator(deviceSerialNum)
                 apkType = constants.APK_TYPE_PREBUILT;
             }
 
-            var checkCmd = path.join(getUserHome(), 'platforms/android/sdk-26-new/platform-tools/adb') + ' -s ' + deviceSerialNum +
+            var checkCmd = path.join(getUserHome(), 'platforms/android/sdk/platform-tools/adb') + ' -s ' + deviceSerialNum +
                 ' install ' + '"' + apkPath + '"';
             shell.exec(checkCmd, {
                 silent: false
