@@ -38,8 +38,8 @@ function run(opts) {
 
     var deviceName = opts.options.device ? "device" : "emulator";
 
-   deviceName = "device";
-   console.log("deviceName= " + deviceName);
+   //deviceName = "device";
+   //console.log("deviceName= " + deviceName);
    //console.log("opts.options.device= " + opts.options.device);
 
     //return runOnDevice();
